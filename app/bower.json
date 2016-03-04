@@ -1,0 +1,15 @@
+{
+  "name": "financialGoal",
+  "authors": [
+    "lidak <oleksandr.lidak@symphony-solutions.eu>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-ui-router": "~0.2.18"
+  }
+}
