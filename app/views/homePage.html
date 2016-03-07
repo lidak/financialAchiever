@@ -1,5 +1,18 @@
 <h1>Home Page</h1>
 
 
-<a ui-sref="category">Create category</a>
-<a ui-sref="createMonthPlan">Create new month plan.</a>
+<a ui-sref="category">Create category.</a>
+<a ui-sref="createMonthPlan" id="new-plan-link">Create new month plan.</a>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Category</td>
+    <td>Planned</td>
+  </tr>
+  <tr ng-repeat="expence in currentMonthePlan">
+    <td>{{ expence.name }}</td>
+    <td>{{ expence.category }}</td>
+    <td>{{ expence.amount | currency }}</td>
+  </tr>
+</table>

@@ -2,9 +2,12 @@
 
 angular
 .module('myApp')
-.controller('HomePageController', ['$scope', function ($scope) {
-  $scope.name = 'Sasha';
-  $scope.setName = function (name) {
-    $scope.name = name;
-  }
+.controller('HomePageController', ['$scope', 'monthPlanFactory', function ($scope, monthPlanFactory) {
+  monthPlanFactory.getDataForMonth().then(
+    function(data) {
+      $scope.currentMonthePlan = data.expences;
+    },
+    function(err) {
+
+    });
 }]);
