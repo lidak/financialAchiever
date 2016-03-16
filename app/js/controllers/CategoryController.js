@@ -5,7 +5,8 @@ angular
   .controller('CategoryController', ['$scope', '$state', function ($scope, $state) {
     $scope.category = {
       name: undefined,
-      isDefault: false
+      isDefault: true,
+      asd: 'asd'
     };
 
     $scope.createCategory = function () {

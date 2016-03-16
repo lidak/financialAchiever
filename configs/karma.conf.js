@@ -1,3 +1,4 @@
+'use strict';
 // Karma configuration
 // Generated on Fri Mar 04 2016 13:02:47 GMT+0200 (EET)
 
@@ -5,7 +6,7 @@ module.exports = function(config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../',
 
 
         // frameworks to use
@@ -63,10 +64,10 @@ module.exports = function(config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
+        singleRun: true,
 
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
-}
+    });
+};
