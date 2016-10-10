@@ -3,24 +3,26 @@
 var gulp = require('gulp'),
     gulpProtractorAngular = require('gulp-angular-protractor'),
     Server = require('karma').Server,
-    appServer = require('./server');
+    appServer = require('./server'),
+    refresh = require('gulp-refresh');
 
-gulp.task('test', ['runE2ETests', 'runUnitTests']);
+gulp.task('test', [/*'runE2ETests''runUnitTests', */]);
 
-gulp.task('TDD', function() {
-    gulp.watch(['app/js/*.js', 'app/js/**/**.js'], ['test']);
+gulp.task('TDD',['startServer'], function() {
+    gulp.watch([
+        'app/js/*.js',
+        'app/js/**/**.js',
+        'app/views/**.html',
+        'app/index.html'
+    ], () => {
+        refresh();
+        console.log('files change is triggered.')
+    });
 });
-
-/*gulp.task('server', function (callback) {
-  exec('node server.js', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    callback(err);
-  });
-});*/
 
 gulp.task('startServer', function(callback) {
     appServer.start(callback);
+    refresh.listen();
 });
 
 gulp.task('stopServer', function (callback) {
