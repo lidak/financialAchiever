@@ -11,5 +11,6 @@ angular
 
     $scope.createCategory = function () {
       $state.go('home');
+      
     };
   }]);
