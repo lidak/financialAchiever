@@ -15,7 +15,7 @@ app.get('*', function(req, res) {
 });
 
 
-function start (callback) {
+function start(callback) {
     if (serverStarted) {
         return;
     }
@@ -23,16 +23,20 @@ function start (callback) {
     server = app.listen(port, function() {
         serverStarted = true;
         console.log(`Static was served by express on ${port}-th port.`);
-        callback();
+        if (typeof callback === 'function') {
+            callback();
+        }
     });
 }
 
-function stop (callback) {
+function stop(callback) {
     if (!serverStarted) {
         return;
     }
     server.close();
-    callback();
+    if (typeof callback === 'function') {
+        callback();
+    }
     serverStarted = false;
 }
 

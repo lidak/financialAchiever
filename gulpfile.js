@@ -6,15 +6,21 @@ var gulp = require('gulp'),
     appServer = require('./server'),
     refresh = require('gulp-refresh');
 
-gulp.task('test', [/*'runE2ETests''runUnitTests', */]);
+gulp.task('test', ['e2e', 'unit']);
 
-gulp.task('TDD',['startServer'], function() {
+gulp.task('TDD', function(callback) {
+    // console.log(__dirname + '/configs/karma.conf.js');
+    // new Server({
+    //     configFile: __dirname + '/configs/karma.conf.js'
+    // }, callback).start();
+
+
     gulp.watch([
         'app/js/*.js',
         'app/js/**/**.js',
         'app/views/**.html',
         'app/index.html'
-    ], () => {
+    ], ['unit'], () => {
         refresh();
         console.log('files change is triggered.')
     });
@@ -25,11 +31,9 @@ gulp.task('startServer', function(callback) {
     refresh.listen();
 });
 
-gulp.task('stopServer', function (callback) {
-    appServer.stop(callback);
-})
+gulp.task('stopServer', stopServer);
 
-gulp.task('runE2ETests', function(callback) {
+gulp.task('e2e', ['startServer'], function(callback) {
     gulp
         .src('test/e2e/**.js')
         .pipe(gulpProtractorAngular({
@@ -39,13 +43,24 @@ gulp.task('runE2ETests', function(callback) {
         }))
         .on('error', function(e) {
             console.log(e);
+            stopServer();
         })
-        .on('end', callback);
+        .on('end', function(callback) {
+            stopServer();
+            if (typeof callback === 'function') {
+                callback();
+            }
+            process.exit();
+        });
 });
 
-gulp.task('runUnitTests', function(callback) {
+gulp.task('unit', function(callback) {
     new Server({
         configFile: __dirname + '/configs/karma.conf.js',
         singleRun: true
     }, callback).start();
 });
+
+function stopServer(callback) {
+    appServer.stop(callback);
+}

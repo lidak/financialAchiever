@@ -9,16 +9,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-angular-protractor": "^0.1.1",
-    "gulp-refresh": "^1.1.0",
-    "jasmine-core": "^2.4.1",
-    "karma": "^0.13.21",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-ie-launcher": "^0.2.0",
-    "karma-jasmine": "^0.3.7"
+    "gulp": "*",
+    "gulp-angular-protractor": "*",
+    "gulp-refresh": "*",
+    "jasmine-core": "*",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-ie-launcher": "*",
+    "karma-jasmine": "*"
   },
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "*"
   }
 }

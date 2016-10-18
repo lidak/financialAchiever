@@ -20,7 +20,7 @@ module.exports = function(config) {
             'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'tests/bower_components/angular-mocks/angular-mocks.js',
             'app/js/app.js',
-            'app/js/controllers/*.js',
+            'app/js/**/**.js',
             'tests/unit/*.test.js'
         ],
 
