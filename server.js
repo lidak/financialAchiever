@@ -8,6 +8,7 @@ var express = require('express'),
 
 app.use('/bower_components', express.static(`${__dirname}/app/bower_components`));
 app.use('/js', express.static(`${__dirname}/app/js`));
+app.use('/css', express.static(`${__dirname}/app/css`));
 app.use('/views', express.static(`${__dirname}/app/views`));
 
 app.get('*', function(req, res) {

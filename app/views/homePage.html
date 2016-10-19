@@ -14,7 +14,12 @@
     </tr>
     <tr class="create_expence">
         <td>
-            <input type="text" ng-model-="newExpence.name">
+            <md-button class="md-fab md-mini" aria-label="Eat cake">
+                <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+            </md-button>
+        </td>
+        <td>
+            <input type="text" ng-model-="newExpence.name" class="new-expence-name">
         </td>
         <td>
             <select name="" id="" ng-model="newExpence.category" ng-options="categories">

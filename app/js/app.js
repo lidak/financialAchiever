@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('myApp', ['ui.router'])
+  .module('myApp', ['ui.router', 'ngMaterial'])
   .config(function ($stateProvider) {
     $stateProvider.state('home', {
       url: '/',
@@ -19,7 +19,7 @@ angular
       url: '/newMonthPlan',
       controller: 'NewMonthPlanController',
       templateUrl: '/views/newMonthPlan.html'
-    })
+    });
   })
   .run(['$state', function ($state) {
       $state.go('home');

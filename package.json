@@ -12,6 +12,7 @@
     "gulp": "*",
     "gulp-angular-protractor": "*",
     "gulp-refresh": "*",
+    "gulp-sass": "^2.3.2",
     "jasmine-core": "*",
     "karma": "*",
     "karma-chrome-launcher": "*",

@@ -4,17 +4,22 @@ var gulp = require('gulp'),
     gulpProtractorAngular = require('gulp-angular-protractor'),
     Server = require('karma').Server,
     appServer = require('./server'),
-    refresh = require('gulp-refresh');
+    refresh = require('gulp-refresh'),
+    sass = require('gulp-sass');
 
 gulp.task('test', ['e2e', 'unit']);
 
-gulp.task('TDD', function(callback) {
-    // console.log(__dirname + '/configs/karma.conf.js');
-    // new Server({
-    //     configFile: __dirname + '/configs/karma.conf.js'
-    // }, callback).start();
+gulp.task('sass', function () {
+  return gulp.src('app/scss/main.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('app/css'));
+});
+ 
+gulp.task('sass:watch', function () {
+  gulp.watch('app/scss/*.scss', ['sass']);
+});
 
-
+gulp.task('TDD', ['startServer', 'sass:watch'], function(callback) {
     gulp.watch([
         'app/js/*.js',
         'app/js/**/**.js',
